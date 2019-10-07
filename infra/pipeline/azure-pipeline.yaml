@@ -16,80 +16,13 @@ stages:
       inputs:
         versionSpec: 3.7.x
     - task: ShellScript@2
-      displayName: Install Application Dependencies
-      inputs:
-        scriptPath: infra/pipeline/scripts/install-application-dependencies.sh
-        cwd: $(System.DefaultWorkingDirectory)
-        disableAutoCwd: true
-    - task: ShellScript@2
       displayName: Install Infrastructure Dependencies
       inputs:
         scriptPath: infra/pipeline/scripts/install-infrastructure-dependencies.sh
         cwd: $(System.DefaultWorkingDirectory)
         args: "$(ghtoken)"
         disableAutoCwd: true
-    # - task: ShellScript@2
-    #   displayName: Run Application Tests
-    #   inputs:
-    #     scriptPath: infra/pipeline/scripts/run-application-tests.sh
-    #     cwd: $(System.DefaultWorkingDirectory)
-    #     disableAutoCwd: true
-    # - task: ShellScript@2
-    #   displayName: Run Infrastructure Tests
-    #   inputs:
-    #     scriptPath: infra/pipeline/scripts/run-infrastructure-tests.sh
-    #     cwd: $(System.DefaultWorkingDirectory)
-    #     disableAutoCwd: true        
-    # - task: PublishTestResults@2
-    #   displayName: Publish Unit Test Results
-    #   inputs:
-    #     testResultsFiles: |
-    #       **/test-*.xml
-    #       **/junit.xml
-    #     failTaskOnFailedTests: 'true'
-    # - task: ShellScript@2
-    #   displayName: Run Integration Tests
-    #   inputs:
-    #     scriptPath: infra/pipeline/scripts/run-integration-tests.sh
-    #     cwd: $(System.DefaultWorkingDirectory)
-    #     disableAutoCwd: true
-    # - task: PublishTestResults@2
-    #   displayName: Publish Integration Test Results
-    #   inputs:
-    #     testResultsFiles: |
-    #       **/integration/test-*.xml
-    #       **/integration/junit.xml
-    #     failTaskOnFailedTests: 'true'
-    # - task: ShellScript@2
-    #   displayName: Install Lambda Dependencies
-    #   inputs:
-    #     scriptPath: infra/pipeline/scripts/install-lambda-dependencies.sh
-    #     cwd: $(System.DefaultWorkingDirectory)
-    #     disableAutoCwd: true
-    # - task: ShellScript@2
-    #   displayName: Capture Python Scripts
-    #   inputs:
-    #     scriptPath: infra/pipeline/scripts/capture-python-scripts.sh
-    #     cwd: $(System.DefaultWorkingDirectory)
-    #     disableAutoCwd: true
-    # - task: ShellScript@2
-    #   displayName: Zip Python Scripts
-    #   inputs:
-    #     scriptPath: infra/pipeline/scripts/zip-python-scripts.sh
-    #     cwd: $(System.DefaultWorkingDirectory)
-    #     disableAutoCwd: true
-    # - task: CopyFiles@2
-    #   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    #   inputs:
-    #     Contents: |-
-    #       target/*.zip
-    #       infra/pipeline/scripts/**
-    #       infra/cdk/**
-    #     TargetFolder: $(Build.ArtifactStagingDirectory)
-    # - task: PublishBuildArtifacts@1
-    #   displayName: 'Publish Artifact: pct-own'
-    #   inputs:
-    #     artifactName: 'pct-own'
+    
 - stage: deploy_application
   displayName: Deploy Application
   dependsOn: build_and_test
