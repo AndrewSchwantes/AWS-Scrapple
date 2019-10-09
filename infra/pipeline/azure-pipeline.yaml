@@ -22,7 +22,19 @@ stages:
         cwd: $(System.DefaultWorkingDirectory)
         args: "$(ghtoken)"
         disableAutoCwd: true
-    
+    - task: ShellScript@2
+      displayName: Run Infrastructure Tests
+      inputs:
+        scriptPath: infra/pipeline/scripts/run-infrastructure-tests.sh
+        cwd: $(System.DefaultWorkingDirectory)
+        disableAutoCwd: true
+    - task: PublishTestResults@2
+      displayName: Publish Unit Test Results
+      inputs:
+        testResultsFiles: |
+          **/test-*.xml
+          **/junit.xml
+        failTaskOnFailedTests: 'true'
 - stage: deploy_application
   displayName: Deploy Application
   dependsOn: build_and_test
