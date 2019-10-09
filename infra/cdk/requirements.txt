@@ -1,3 +1,4 @@
+pytest
 aws-cdk.core
 aws-cdk.aws_iam
 aws-cdk.aws_sqs
