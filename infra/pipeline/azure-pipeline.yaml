@@ -35,6 +35,14 @@ stages:
           **/test-*.xml
           **/junit.xml
         failTaskOnFailedTests: 'true'
+    - task: ShellScript@2
+            displayName: synthesize cloudformation
+            inputs:
+              scriptPath: infra/pipeline/scripts/synthesize-cloudformation.sh
+              cwd: $(System.DefaultWorkingDirectory)
+              disableAutoCwd: true
+
+        
 - stage: deploy_application
   displayName: Deploy Application
   dependsOn: build_and_test

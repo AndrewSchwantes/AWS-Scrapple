@@ -6,10 +6,10 @@ from aws_cdk import (
     core
 )
 
-from kaark_construct import KaarkConstruct
+from .kaark_construct import KaarkConstruct
 
 
-class MyStack(core.Stack):
+class KaarkStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)

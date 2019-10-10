@@ -1,8 +1,6 @@
 import unittest
-
 from aws_cdk import core
-
-from kaark_construct import KaarkConstruct
+from infra.cdk.kaark_construct import KaarkConstruct
 
 
 class TestKaarkConstruct(unittest.TestCase):
@@ -13,5 +11,5 @@ class TestKaarkConstruct(unittest.TestCase):
 
     def test_num_buckets(self):
         num_buckets = 10
-        hello = KaarkConstruct(self.stack, "Test1", num_buckets)
-        assert len(hello.buckets) == num_buckets
+        kaark = KaarkConstruct(self.stack, "Test1", num_buckets)
+        assert len(kaark.buckets) == num_buckets
