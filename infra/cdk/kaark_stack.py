@@ -6,7 +6,7 @@ from aws_cdk import (
     core
 )
 
-from .kaark_construct import KaarkConstruct
+from kaark_construct import KaarkConstruct
 
 
 class KaarkStack(core.Stack):

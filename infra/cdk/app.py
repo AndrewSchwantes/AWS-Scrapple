@@ -2,7 +2,7 @@
 
 from aws_cdk import core
 
-from infra.cdk.kaark_stack import KaarkStack
+from kaark_stack import KaarkStack
 
 
 app = core.App()
