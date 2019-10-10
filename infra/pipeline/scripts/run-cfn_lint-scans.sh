@@ -1,5 +1,5 @@
 pip install cfn-lint
-cfn-lint target/*.template.json --info
+cfn-lint infra/cdk/target/*.template.json --info
 
 # Capture the STDOUT of the cfn_lint command and set it as a variable. This should be the exit code value.
 value=$?
