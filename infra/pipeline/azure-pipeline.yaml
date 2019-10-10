@@ -41,7 +41,31 @@ stages:
         scriptPath: infra/pipeline/scripts/synthesize-cloudformation.sh
         cwd: $(System.DefaultWorkingDirectory)
         disableAutoCwd: true
-
+    - task: whitesource.ws-bolt.bolt.wss.WhiteSource Bolt@19
+            displayName: "WhiteSource Bolt"
+            condition: "eq(variables['build.sourceBranch'], 'refs/heads/master')"
+          - task: ShellScript@2
+            displayName: run cfn_lint scans
+            inputs:
+              scriptPath: infra/pipeline/scripts/run-cfn_lint-scans.sh
+              cwd: $(System.DefaultWorkingDirectory)
+              disableAutoCwd: true
+          - task: UseRubyVersion@0
+            displayName: Use Ruby 2.4 for cfn_nag
+            inputs:
+              versionSpec: ==2.4
+          - task: ShellScript@2
+            displayName: run cfn_nag scans
+            inputs:
+              scriptPath: infra/pipeline/scripts/run-cfn_nag-scans.sh
+              cwd: $(System.DefaultWorkingDirectory)
+              disableAutoCwd: true
+          - task: ShellScript@2
+            displayName: run bandit scans
+            inputs:
+              scriptPath: infra/pipeline/scripts/run-bandit-scans.sh
+              cwd: $(System.DefaultWorkingDirectory)
+              disableAutoCwd: true
         
 - stage: deploy_application
   displayName: Deploy Application
