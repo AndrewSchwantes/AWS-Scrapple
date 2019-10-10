@@ -9,4 +9,4 @@ cd infra/cdk
 
 export AWS_DEFAULT_REGION="us-east-1"
 
-cdk deploy --verbose -r arn:aws:iam::911956111630:role/pgi/infra/pgi-infra-stack-exec --require-approval never
+cdk deploy --verbose -r arn:aws:iam::000000000000:role/pgi/infra/pgi-infra-stack-exec --require-approval never
