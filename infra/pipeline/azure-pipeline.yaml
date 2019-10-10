@@ -82,6 +82,7 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact: AWS-Scrapple'
       inputs:
+        pathToPublish: $(Build.ArtifactStagingDirectory)
         artifactName: 'AWS-Scrapple'
 
 - stage: deploy_application
@@ -101,6 +102,7 @@ stages:
           - task: DownloadPipelineArtifact@2
             displayName: Download Artifacts
             inputs:
+              artifactName: 'AWS-Scrapple'
               path: $(System.ArtifactsDirectory)
           - task: UsePythonVersion@0
             displayName: Use Python 3.7.x
