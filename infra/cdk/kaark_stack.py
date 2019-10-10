@@ -6,7 +6,7 @@ from aws_cdk import (
     core
 )
 
-from .hello_construct import HelloConstruct
+from kaark_construct import KaarkConstruct
 
 
 class MyStack(core.Stack):
@@ -26,6 +26,6 @@ class MyStack(core.Stack):
 
         topic.add_subscription(subs.SqsSubscription(queue))
 
-        hello = HelloConstruct(self, "MyHelloConstruct", num_buckets=4)
+        kaark = KaarkConstruct(self, "MyKaarkConstruct", num_buckets=4)
         user = iam.User(self, "MyUser")
-        hello.grant_read(user)
+        kaark.grant_read(user)

@@ -5,7 +5,7 @@ from aws_cdk import (
 )
 
 
-class HelloConstruct(core.Construct):
+class KaarkConstruct(core.Construct):
 
     @property
     def buckets(self):

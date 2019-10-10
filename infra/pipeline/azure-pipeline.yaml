@@ -52,7 +52,7 @@ stages:
           - task: DownloadPipelineArtifact@2
             displayName: Download Artifacts
             inputs:
-              artifact: pct-own
+              artifact: AWS-Scrapple
               path: $(System.ArtifactsDirectory)
           - task: UsePythonVersion@0
             displayName: Use Python 3.7.x
