@@ -79,7 +79,7 @@ stages:
           infra/pipeline/scripts/**
           infra/cdk/**
         TargetFolder: $(Build.ArtifactStagingDirectory)
-    - task: PublishPipelineArtifacts@1
+    - task: PublishPipelineArtifact@1
       displayName: 'Publish Artifact: AWS-Scrapple'
       inputs:
         artifactName: 'AWS-Scrapple'
