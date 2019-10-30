@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# stuff
+# stuff and things
 
 from aws_cdk import core
 
